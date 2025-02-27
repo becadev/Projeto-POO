@@ -10,17 +10,16 @@ public class GerenciadorFinanceiroMain {
         Scanner input = new Scanner(System.in);
         int op = 0;
         Gerenciador sistema = new Gerenciador();
-        while(op != 8){
+        while(op != 7){
             System.out.println(
                     "\nOPÇÕES DO SISTEMA:\n" +
                     "1 - Cadastrar Receita\n" +
                     "2 - Cadastrar Gasto\n" +
                     "3 - Cadastrar Meta\n" +
-                    "4 - Visualizar Finanças\n" +
+                    "4 - Visualizar Finanças do Mês\n" +
                     "5 - Atualizar Meta\n" +
-                    "6 - Visualizar Gastos do Mês\n" +
-                    "7 - Visualizar Categoria Específica\n" +
-                    "8 - Sair");
+                    "6 - Visualizar Categoria Específica\n" +
+                    "7 - Sair");
             System.out.print("Opção: ");
             op = input.nextInt();
             System.out.println("\n");
@@ -63,16 +62,24 @@ public class GerenciadorFinanceiroMain {
                 String situacao = "iniciada";
                 sistema.cadastrarMeta(descricao, dataIn, dataFim, situacao, valor);
             }
+            if(op == 4){
+                System.out.println("-----------------VISUALIZAR FINANÇAS DO MÊS-----------------");
+                System.out.print("Mês(minúsculo e sem acento): ");
+                input.nextLine();
+                String mes = input.nextLine();
+                sistema.visuGeralMes(mes);
+            }
+            // if(op == 5){
+            //     System.out.println("----------------ATUALIZAR META-----------------");
+            //     listarMetas();
+            //     System.out.print("Qual meta deseja atualizar: ");
+            //     input.nextLine();
+            //     String meta = input.nextLine();
+            //     System.out.print("Novo status da meta: ");
+            //     input.nextLine();
+            //     String m = input.nextLine();
 
-            // if(op == 4){
-            //     System.out.println("-----------------VISUALIZAR FINANÇAS-----------------");
-            //     System.out.println("Descrição: ");
-            //     String descricao = input.nextLine();
-            //     System.out.println("Data de início: ");
-            //     String dataIn= input.nextLine();
-            //     System.out.println("Data de término: ");
-            //     String dataFim = input.nextLine();
-            //     sistema.cadastrarMeta(descricao, dataIn, dataFim);
+            //     sistema.atualizarMeta(meta, m);
             // }
 
         }
