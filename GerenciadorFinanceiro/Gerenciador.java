@@ -10,6 +10,7 @@ public class Gerenciador{
     protected List<Meta> metasRealizadas = new ArrayList<>();
     private double saldo = 0.00;
     private double totalGasto = 0.00;
+    private List<String> meses = ["janeiro", "fevereiro", "março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
 
     // Gasto(List<Categoria> categoria, double valor, String data){
     public void cadastrarGasto(String descricao, double valor, String mes ) {
@@ -134,5 +135,14 @@ public class Gerenciador{
             }
         }
         System.out.println("Meta não cadastrada");
+    }
+    // vai mostrar um relatorio de gasto de todos os meses cadastrados, receitas, metas e tals
+    public void gerarRelatorio(){
+        for(int i = 0; i < todosGastos.size() ; i++ ){
+            System.out.println("+----------------------------------------+");
+            System.out.println("|       Relatório de "+ meses[i] + "     |");
+            System.out.println("+----------------------------------------+");
+            for(int k = 0; k < )
+        }
     }
 }

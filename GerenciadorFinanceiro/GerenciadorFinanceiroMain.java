@@ -10,7 +10,7 @@ public class GerenciadorFinanceiroMain {
         Scanner input = new Scanner(System.in);
         int op = 0;
         Gerenciador sistema = new Gerenciador();
-        while(op != 7){
+        while(op != 8){
             System.out.println(
                     "\nOPÇÕES DO SISTEMA:\n" +
                     "1 - Cadastrar Receita\n" +
@@ -19,7 +19,8 @@ public class GerenciadorFinanceiroMain {
                     "4 - Visualizar Finanças do Mês\n" +
                     "5 - Atualizar Meta\n" +
                     "6 - Visualizar Categoria Específica\n" +
-                    "7 - Sair");
+                    "7 - Visualizar Finanças gerais\n" +
+                    "8 - Sair");
             System.out.print("Opção: ");
             op = input.nextInt();
             System.out.println("\n");
@@ -69,19 +70,18 @@ public class GerenciadorFinanceiroMain {
                 String mes = input.nextLine();
                 sistema.visuGeralMes(mes);
             }
-            // if(op == 5){
-            //     System.out.println("----------------ATUALIZAR META-----------------");
-            //     listarMetas();
-            //     System.out.print("Qual meta deseja atualizar: ");
-            //     input.nextLine();
-            //     String meta = input.nextLine();
-            //     System.out.print("Novo status da meta: ");
-            //     input.nextLine();
-            //     String m = input.nextLine();
+            if(op == 5){
+                System.out.println("----------------ATUALIZAR META-----------------");
+                listarMetas();
+                System.out.print("Qual meta deseja atualizar: ");
+                input.nextLine();
+                String meta = input.nextLine();
+                System.out.print("Novo status da meta: ");
+                input.nextLine();
+                String m = input.nextLine();
 
-            //     sistema.atualizarMeta(meta, m);
-            // }
-
+                sistema.atualizarMeta(meta, m);
+            }
         }
         input.close();
     }
