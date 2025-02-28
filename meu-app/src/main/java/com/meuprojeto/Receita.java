@@ -1,4 +1,4 @@
-package GerenciadorFinanceiro;
+package com.meuprojeto;
 import java.util.List;
 // Class de estrutura para array com todas as entradas de valores
 

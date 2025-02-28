@@ -1,4 +1,4 @@
-package GerenciadorFinanceiro;
+package com.meuprojeto;
 
 public class Categoria{
     protected String descricao;

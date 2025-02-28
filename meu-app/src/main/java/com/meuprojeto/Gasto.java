@@ -1,4 +1,4 @@
-package GerenciadorFinanceiro;
+package com.meuprojeto;
 import java.util.List;
 
 public class Gasto {

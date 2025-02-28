@@ -1,6 +1,7 @@
-package GerenciadorFinanceiro;
+package com.meuprojeto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 public class Gerenciador{
     protected List<Categoria> todasCategorias = new ArrayList<>();
@@ -10,21 +11,33 @@ public class Gerenciador{
     protected List<Meta> metasRealizadas = new ArrayList<>();
     private double saldo = 0.00;
     private double totalGasto = 0.00;
-    private List<String> meses = ["janeiro", "fevereiro", "março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+    private BancoDeDados bancoDeDados;
+    private List<String> meses = Arrays.asList( "janeiro", "fevereiro", "março", "abril", "maio",
+                                                "junho", "julho", "agosto", "setembro", "outubro",
+                                                "novembro", "dezembro");
+    
 
+    public Gerenciador() {
+        this.bancoDeDados = new BancoDeDados();
+    }
+                                            
     // Gasto(List<Categoria> categoria, double valor, String data){
     public void cadastrarGasto(String descricao, double valor, String mes ) {
         todosGastos.add(new Gasto(new Categoria(descricao),valor,mes));
+        bancoDeDados.adicionarGasto(mes, novoGasto);
         System.out.println("Gasto cadastrado com sucesso!");
     }
     // Receita(List<Categoria> categoria, double valor){
     public void cadastrarReceita(String descricao, double valor, String mes ) {
         todasReceitas.add(new Receita(new Categoria(descricao),valor,mes));
+        bancoDeDados.adicionarReceita(mes, novaReceita);
         System.out.println("Receita cadastrada com sucesso!");
     }
     public void cadastrarMeta(String descricao, String dataInicio, String dataFinal, String situacao, double valor ) {
         todasMetas.add(new Meta(descricao, dataInicio, dataFinal, situacao, valor));
+        bancoDeDados.adicionarMeta(dataInicio, novaMeta);
         System.out.println("Meta cadastrada com sucesso!");
+        System.out.println("Descrição da meta: " + descricao);
     }
     public void somarGastos(){
         for(Gasto gasto : todosGastos){
@@ -111,38 +124,49 @@ public class Gerenciador{
             System.out.println("Nenhum gasto cadastrado");
         }
     } // saldo, total de gastos, se alguma meta foi realizada
-    public void listarMetas() {
+    public boolean listarMetas() {
         if(todasMetas.size() == 0){
             System.out.println("Nenhuma meta cadastrada");
+            return false;
+        }
+        int i = 0;
+        for(Meta meta : todasMetas) {
+            i++;
+            System.out.println("[" + i +"]" + meta.descricao);
+        }
+        return true;
+    }
+    public void listaCategoria(String cate) {
+        if(todasCategorias.size() == 0){
+            System.out.println("Nenhuma gasto da categoria" + "cadastrada");
             return;
         }
-        for(Meta meta : todasMetas) {
-            System.out.println("[" + meta +"]" + meta.descricao);
+        System.out.println("Categoria" + cate);
+        for(Categoria categoria : todasCategorias){
+            if(categoria.descricao.equals(cate))
+                System.out.println("Descricao: "+ categoria.descricao);
+                System.out.println("Valor: "+ categoria.valor);
+                System.out.println("Data: "+ categoria.data);
         }
     }
-    public void atualizarMeta(String m, String mudarSituacao) {
-        for (int i = 0; i < todasMetas.size(); i++) {
-            if (todasMetas.get(i).descricao.equals(m)) {
-                todasMetas.get(i).situacao = mudarSituacao;
-    
-                if (mudarSituacao.equals("realizada")) {
-                    metasRealizadas.add(todasMetas.get(i));
-                    todasMetas.remove(i); // deleta da lista de metas principais
-                }
-    
+    public boolean atualizarMeta(int m, String mudarSituacao) {
+        if(listarMetas()){
+            if(todasMetas.size() < m){
+                todasMetas.get(m-1).situacao = mudarSituacao;
                 System.out.println("Meta atualizada!");
-                return;
+                return true;
+            }
+            else if (mudarSituacao.equals("realizada")) {
+                metasRealizadas.add(todasMetas.get(m-1));
+                todasMetas.remove(m-1); // deleta da lista de metas principais
+                System.out.println("Meta atualizada!");
+                return true;
             }
         }
-        System.out.println("Meta não cadastrada");
+        return false;
     }
     // vai mostrar um relatorio de gasto de todos os meses cadastrados, receitas, metas e tals
-    public void gerarRelatorio(){
-        for(int i = 0; i < todosGastos.size() ; i++ ){
-            System.out.println("+----------------------------------------+");
-            System.out.println("|       Relatório de "+ meses[i] + "     |");
-            System.out.println("+----------------------------------------+");
-            for(int k = 0; k < )
-        }
+    public void visualizarFinancasGerais() {
+        bancoDeDados.visualizarFinancasGerais();
     }
 }

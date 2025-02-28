@@ -1,9 +1,7 @@
-package src.main.java;
+package com.meuprojeto;
 import java.util.Scanner;
-
-public class GerenciadorFinanceiroMain {
-    public static void main(String[] args) {
-
+public class App {
+    public static void main( String[] args ) {
         System.out.println("\n+-------------------------------------------------------------+");
         System.out.println("| Bem vind@ ao seu sistema de gerenciamento financeiro pessoal|");
         System.out.println("+-------------------------------------------------------------+");
@@ -51,17 +49,20 @@ public class GerenciadorFinanceiroMain {
 
             if(op == 3){
                 System.out.println("-----------------CADASTRAR META-----------------");
+
                 System.out.print("Descrição: ");
+                input.nextLine();  
                 String descricao = input.nextLine();
-                input.nextLine();
                 System.out.print("Data de início: ");
-                String dataIn= input.nextLine();
+                String dataIn = input.nextLine();
                 System.out.print("Data de término: ");
                 String dataFim = input.nextLine();
                 System.out.print("Qual valor deseja economizar: R$ ");
                 double valor = input.nextDouble();
+                input.nextLine();  
                 String situacao = "iniciada";
                 sistema.cadastrarMeta(descricao, dataIn, dataFim, situacao, valor);
+
             }
             if(op == 4){
                 System.out.println("-----------------VISUALIZAR FINANÇAS DO MÊS-----------------");
@@ -71,16 +72,27 @@ public class GerenciadorFinanceiroMain {
                 sistema.visuGeralMes(mes);
             }
             if(op == 5){
+                int meta = 0;
+                String m = " ";
                 System.out.println("----------------ATUALIZAR META-----------------");
-                listarMetas();
-                System.out.print("Qual meta deseja atualizar: ");
-                input.nextLine();
-                String meta = input.nextLine();
-                System.out.print("Novo status da meta: ");
-                input.nextLine();
-                String m = input.nextLine();
-
+                if(sistema.listarMetas()){
+                    System.out.print("Qual meta deseja atualizar: ");
+                    input.nextLine();
+                    meta = input.nextInt();
+                    System.out.print("Novo status da meta: ");
+                    m = input.nextLine();
+                }
                 sistema.atualizarMeta(meta, m);
+            }
+            if(op == 6) {
+                System.out.println("----------------VISUALIZAR CATEGORIA ESPECÍFICA-----------------");
+                sistema.todasCategorias();
+                System.out.println("Qual categoria deseja visualizar: ");
+                String categoria = input.nextLine();
+                sistema.listaCategoria(categoria);
+            }
+            if(op == 7){
+                sistema.visualizarFinancasGerais();
             }
         }
         input.close();
