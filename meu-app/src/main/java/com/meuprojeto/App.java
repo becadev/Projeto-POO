@@ -77,8 +77,8 @@ public class App {
                 System.out.println("----------------ATUALIZAR META-----------------");
                 if(sistema.listarMetas()){
                     System.out.print("Qual meta deseja atualizar: ");
-                    input.nextLine();
                     meta = input.nextInt();
+                    input.nextLine();
                     System.out.print("Novo status da meta: ");
                     m = input.nextLine();
                 }
@@ -86,7 +86,7 @@ public class App {
             }
             if(op == 6) {
                 System.out.println("----------------VISUALIZAR CATEGORIA ESPECÍFICA-----------------");
-                sistema.todasCategorias();
+                //sistema.todasCategorias();
                 System.out.println("Qual categoria deseja visualizar: ");
                 String categoria = input.nextLine();
                 sistema.listaCategoria(categoria);

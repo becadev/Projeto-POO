@@ -1,0 +1,52 @@
+{
+  "janeiro": {
+    "receitas": [
+      {
+        "categoria": {
+          "descricao": "salario"
+        },
+        "valor": 2000.0,
+        "data": "janeiro"
+      }
+    ],
+    "gastos": [
+      {
+        "categoria": {
+          "descricao": "lazer"
+        },
+        "valor": 20.0,
+        "data": "janeiro"
+      }
+    ],
+    "metas": [
+      {
+        "descricao": "comprar um pc",
+        "dataInicio": "janeiro",
+        "dataFinal": "dezembro",
+        "situacao": "iniciada",
+        "valor": 2000.0
+      }
+    ]
+  },
+  "fevereiro": {
+    "receitas": [
+      {
+        "categoria": {
+          "descricao": "freelancer"
+        },
+        "valor": 500.0,
+        "data": "fevereiro"
+      }
+    ],
+    "gastos": [
+      {
+        "categoria": {
+          "descricao": "roupa"
+        },
+        "valor": 50.0,
+        "data": "fevereiro"
+      }
+    ],
+    "metas": []
+  }
+}

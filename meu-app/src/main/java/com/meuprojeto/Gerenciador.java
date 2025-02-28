@@ -22,23 +22,26 @@ public class Gerenciador{
     }
                                             
     // Gasto(List<Categoria> categoria, double valor, String data){
-    public void cadastrarGasto(String descricao, double valor, String mes ) {
-        todosGastos.add(new Gasto(new Categoria(descricao),valor,mes));
-        bancoDeDados.adicionarGasto(mes, novoGasto);
-        System.out.println("Gasto cadastrado com sucesso!");
-    }
-    // Receita(List<Categoria> categoria, double valor){
-    public void cadastrarReceita(String descricao, double valor, String mes ) {
-        todasReceitas.add(new Receita(new Categoria(descricao),valor,mes));
-        bancoDeDados.adicionarReceita(mes, novaReceita);
-        System.out.println("Receita cadastrada com sucesso!");
-    }
+        public void cadastrarGasto(String descricao, double valor, String mes ) {
+            Gasto novoGasto = new Gasto(new Categoria(descricao), valor, mes);
+            todosGastos.add(novoGasto);
+            bancoDeDados.adicionarGasto(mes, novoGasto);
+            System.out.println("Gasto cadastrado com sucesso!");
+        }
+        
+        public void cadastrarReceita(String descricao, double valor, String mes ) {
+            Receita novaReceita = new Receita(new Categoria(descricao), valor, mes);
+            todasReceitas.add(novaReceita);
+            bancoDeDados.adicionarReceita(mes, novaReceita);
+            System.out.println("Receita cadastrada com sucesso!");
+        }
+        
     public void cadastrarMeta(String descricao, String dataInicio, String dataFinal, String situacao, double valor ) {
-        todasMetas.add(new Meta(descricao, dataInicio, dataFinal, situacao, valor));
+        Meta novaMeta = new Meta(descricao, dataInicio, dataFinal, situacao, valor);
+        todasMetas.add(novaMeta);
         bancoDeDados.adicionarMeta(dataInicio, novaMeta);
         System.out.println("Meta cadastrada com sucesso!");
-        System.out.println("Descrição da meta: " + descricao);
-    }
+    } 
     public void somarGastos(){
         for(Gasto gasto : todosGastos){
             this.totalGasto+= gasto.valor;
@@ -142,11 +145,12 @@ public class Gerenciador{
             return;
         }
         System.out.println("Categoria" + cate);
-        for(Categoria categoria : todasCategorias){
-            if(categoria.descricao.equals(cate))
-                System.out.println("Descricao: "+ categoria.descricao);
-                System.out.println("Valor: "+ categoria.valor);
-                System.out.println("Data: "+ categoria.data);
+        for(Gasto gasto : todosGastos){
+            if(gasto.categoria.descricao.equals(cate)) {
+                System.out.println("Descricao: "+ gasto.categoria.descricao);
+                System.out.println("Valor: "+ gasto.valor);
+                System.out.println("Data: "+ gasto.data);
+            }
         }
     }
     public boolean atualizarMeta(int m, String mudarSituacao) {

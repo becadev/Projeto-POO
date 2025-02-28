@@ -1,6 +1,9 @@
 com/meuprojeto/Gerenciador.class
-com/meuprojeto/Meta.class
-com/meuprojeto/Categoria.class
+com/meuprojeto/BancoDeDados.class
 com/meuprojeto/App.class
+com/meuprojeto/BancoDeDados$1.class
+com/meuprojeto/Meta.class
+com/meuprojeto/DadosMes.class
+com/meuprojeto/Categoria.class
 com/meuprojeto/Receita.class
 com/meuprojeto/Gasto.class
